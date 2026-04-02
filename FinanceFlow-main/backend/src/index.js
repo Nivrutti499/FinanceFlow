@@ -45,13 +45,16 @@ app.use((req, res) => res.status(404).json({ error: `Route ${req.method} ${req.p
 // Error handler
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`\n🚀 FinanceFlow API running on http://localhost:${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/api/health\n`);
-  console.log('Demo credentials:');
-  console.log('  Admin:   admin@financeflow.com   / admin123');
-  console.log('  Analyst: analyst@financeflow.com / analyst123');
-  console.log('  Viewer:  viewer@financeflow.com  / viewer123\n');
-});
+// Only start HTTP server when running locally (not on Vercel)
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`\n🚀 FinanceFlow API running on http://localhost:${PORT}`);
+    console.log(`📊 Health check: http://localhost:${PORT}/api/health\n`);
+    console.log('Demo credentials:');
+    console.log('  Admin:   admin@financeflow.com   / admin123');
+    console.log('  Analyst: analyst@financeflow.com / analyst123');
+    console.log('  Viewer:  viewer@financeflow.com  / viewer123\n');
+  });
+}
 
 module.exports = app;
