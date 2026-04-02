@@ -2,6 +2,8 @@
 backend/node_modules/
 backend/financeflow.db
 backend/.env
+# Allow pre-seeded Prisma DB to be bundled with Vercel deployment
+!backend/prisma/financeflow.db
 
 # Prisma generated
 backend/node_modules/.prisma/
@@ -21,6 +23,7 @@ Thumbs.db
 
 # ===== Misc =====
 *.sqlite
+!backend/prisma/financeflow.db
 *.db-journal
 *.db-shm
 *.db-wal
