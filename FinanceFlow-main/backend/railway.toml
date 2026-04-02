@@ -1,0 +1,6 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "node src/index.js"
+buildCommand = "npm install && npx prisma generate && npx prisma db push && node src/config/seed.js"
